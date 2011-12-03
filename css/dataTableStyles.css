@@ -1,0 +1,136 @@
+
+#hiddenCols {
+  border:1px solid #ccc;
+  padding:3px;
+}
+
+#hiddenCols > a {
+	color:#2580A2;
+	text-decoration:none;
+	margin-right:1ex;
+}
+
+#hiddenCols > a:hover {
+	text-decoration:none;
+}
+
+.dataTablesTable {
+ font-size:100%;
+ border:1px solid #000 !important;
+}
+
+.dataTablesTable th { 
+  padding-right:20px;
+  background-color:#ffffcc;
+  color:#000;
+  font-size:14px;
+  font-weight:bold;
+  padding:3px 3px;
+}
+
+.dataTablesTable th > p {
+	margin-right:1em;
+  margin-top:0px;
+}
+
+.dataTablesTable th > p > a {
+	color:#2580A2;
+	text-decoration:none;
+}
+
+.dataTablesTable th > p > a:hover {
+	text-decoration:underline;
+}
+
+
+.dataTableTable img {
+	margin-right:1em !important;
+	vertical-align:top !important;
+}
+
+.dataTablesTable td {
+ vertical-align:top;
+}
+
+.dataTables_length {
+	float:left;
+	margin-right:10ex;
+	margin-left:0em;}
+
+.dataTables_filter {
+	margin-bottom:1em;
+}
+
+.dataTables_filter input {
+	width:40ex;
+}
+
+.dataTables_info {
+	float:left;
+	margin-right:5ex;
+	margin-top:2px;
+	margin-left:0em;
+}
+
+
+.dataTablesTable p.errorText {
+	margin-left:0px;
+	padding-left:0px;
+}
+
+/* Pagination nested */
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+	height: 19px;
+	width: 19px;
+	margin-left: 3px;
+	float: left;
+	margin-top:3px;
+}
+
+.paginate_disabled_previous {
+	background-image: url('../images/dataTables/back_disabled.jpg');
+}
+
+.paginate_enabled_previous {
+	background-image: url('../images/dataTables/back_enabled.jpg');
+}
+
+.paginate_disabled_next {
+	background-image: url('../images/dataTables/forward_disabled.jpg');
+}
+
+.paginate_enabled_next {
+	background-image: url('../images/dataTables/forward_enabled.jpg');
+}
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+table.display thead th {
+	padding: 3px 10px;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	cursor: pointer;
+	* cursor: hand;
+}
+
+
+.sorting_asc {
+	background: url('../images/dataTables/sort_ascBY.jpg') no-repeat center right;
+}
+
+.sorting_desc {
+	background: url('../images/dataTables/sort_descBY.jpg') no-repeat center right;
+}
+
+.sorting {
+	background: url('../images/dataTables/sort_bothGY.jpg') no-repeat center right;
+}
+
+
+
+

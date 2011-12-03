@@ -1,0 +1,16 @@
+This tool, which will run on Adobe ColdFusion 8 and later, lets you do the following:
+
+--Take a "snapshot" of one or more of your database tables, storing all of the current table data in a JSON file (NOTE: this tool will not work on tables with binary data fields).
+
+--Replace the current data in a table with the data stored in a snapshot, creating a backup snapshot of the data being replaced in the process.
+
+--View the data in a snapshot or backup snapshot in a jQuery-enhanced table that allows you to sort and filter the data.
+
+--Delete older snapshot and backup snapshot files
+
+A smaller, separate tool is also provided in the "tools" directory that will read the snapshot files into query objects.
+
+The current version of the tool supports Oracle, MySQL, and Apache Derby databases, but you can add support for any additional databases by writing a single .cfc file.
+
+Additional details and documentation can be found within the tool itself.  To run the tool, simply unzip the files anywhere under the web root, open the main index.cfm file in a web browser, and read the main page of the tool.
+

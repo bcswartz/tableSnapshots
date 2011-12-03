@@ -1,0 +1,53 @@
+body {
+	margin:0px;
+	padding:0px;
+	/*
+font-family: "Trebuchet MS", arial, sans-serif;
+*/
+	font: 14px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+	font-size:90%;
+}
+
+#content {
+	padding:10px;
+}
+
+#footer {
+	padding:10px;
+}
+
+#footer > p {
+  margin-top:0ex;
+}
+
+#footer > p.versionNum {
+  float:right;
+}
+
+.snapshotName {
+	margin-left:1em;
+	width:20em;
+}
+
+.errorText {
+	color:red;
+	font-weight:bold;
+}
+
+.successText {
+	color:green;
+	font-weight:bold;
+}
+
+#tableList {
+  margin-top:2em;
+}
+
+#tableLabelSpan {
+  margin-left:3em;
+  font-weight:bold;
+}
+
+ul.info >li, ol.info > li {
+	margin-bottom:1.5ex;
+}
