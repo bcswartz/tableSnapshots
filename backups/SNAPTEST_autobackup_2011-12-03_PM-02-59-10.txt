@@ -1,1 +1,0 @@
-{"ROWCOUNT":3,"COLUMNS":["SNAPID","ARTWORK","ARTIST","PRICE"],"DATA":{"SNAPID":[1,2,3],"ARTWORK":["The Rise of Light REDUX","Hero's Downfall","Seven Moments"],"ARTIST":["Fransioux Smith","Jody Ellen","King Gary Frank III"],"PRICE":[1200.95,1.00,9850.00]}}
