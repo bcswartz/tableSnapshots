@@ -12,4 +12,5 @@
 	<li>
 		The <a href="http://cssmenumaker.com/">CSS Menumaker</a> website, where I found the CSS-powered menu used in this tool.
 	</li>
+	<li>The <a href="http://www.malsup.com/jquery/block/">BlockUI</a> jQuery plugin, used for the temporary blocking on the snapshot view page when columns are being manipulated.</li>
 </ul>

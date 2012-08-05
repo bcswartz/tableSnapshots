@@ -51,3 +51,39 @@ font-family: "Trebuchet MS", arial, sans-serif;
 ul.info >li, ol.info > li {
 	margin-bottom:1.5ex;
 }
+
+.hideElement {
+	display:none;
+}
+
+/* View snapshot styles */
+
+#colControlsLink {
+  color:blue;
+}
+
+#colControlsLink:hover {
+  text-decoration:underline;
+}
+
+#columnControls {
+  border:2px solid #ccc;
+  margin:2ex 0ex;
+  padding:5px;
+}
+
+#columnControls > .showControls,.hideControls {
+	font-weight:bold;
+}
+
+.chead {
+	margin-top:0px;
+}
+
+.search_init {
+  	color:#666;
+}
+
+th {
+ vertical-align:bottom;
+}

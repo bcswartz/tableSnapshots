@@ -1,38 +1,70 @@
 $(function() {  
 	
 	var $dTable= $("#snapDataTable").dataTable( {
-			"iDisplayLength": 25,
+			"iDisplayLength": 5,
 			"bStateSave": false,
+			"sScrollX": "100%",
 			"oLanguage": {
 				"sSearch": "Search all columns:",
-				"sLengthMenu": 'Show <select><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="200">200</option></select> entries'
+				"sLengthMenu": 'Show <select><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="200">200</option><option value="-1">All</option></select> entries'
 		}
 	});		
 	
-	$("a.hideLink").click(function(e) {
+	$("#colControlsLink").click(function(e) {
+		var $tog= $(this);
+		if($tog.hasClass("showControls")) {
+			$tog.text("Hide column controls");
+			$tog.removeClass("showControls");
+			$tog.addClass("hideControls");
+			$("#hiddenCols").removeClass("hideElement");
+		} else {
+			$tog.text("Display column controls");
+			$tog.removeClass("hideControls");
+			$tog.addClass("showControls");
+			$("#hiddenCols").addClass("hideElement");
+		}
 		e.preventDefault();
-		var $link= $(this);
-		var columnIndex= $link.attr("href");
-		$("#hiddenCols").append('<a class="showLink" href="' + columnIndex + '">' + $link.attr("title") + '</a>');		
-		$dTable.fnSetColumnVis(columnIndex,false);
+	});
+	
+	$("#selAll").click(function(e) {
+		e.preventDefault();
+		$(":checkbox",$("#hiddenCols")).attr("checked",true);
+	});
+	
+	$("#deselAll").click(function(e) {
+		e.preventDefault();
+		$(":checkbox",$("#hiddenCols")).attr("checked",false);
+	});
+	
+	$("#updateCols").click(function(e) {
+		$.blockUI({ message: '<h1>Updating table...</h1>' });
+		$(":checkbox",$("#hiddenCols")).each(function() {
+			var $box= $(this);
+			var columnIndex= $box.val();
+			if($box.attr("checked")) {
+				$dTable.fnSetColumnVis(columnIndex,true,false);
+			} else {
+				$dTable.fnSetColumnVis(columnIndex,false,false);
+			}
+		});
+		$dTable.fnAdjustColumnSizing();
+		$.unblockUI();
+		e.preventDefault();
 	});
 
-	$("a.showLink").live("click",function(e) {
-		e.preventDefault();
-		var $link= $(this);
-		var columnIndex= $link.attr("href");
-		$dTable.fnSetColumnVis(columnIndex,true);
-		$dTable.fnAdjustColumnSizing();
-		$link.remove();
-	});	
 	
-	$("tfoot input").keyup( function () {
-        /* Filter on the column (the index) of this element */
-        $dTable.fnFilter( this.value, $("tfoot input").index(this) );
+	$("thead input").click( function (e) { // i add this.
+                stopTableSorting(e);
+                this.focus();
+            });
+		
+	$("thead input").keyup( function (e) {
+		//Last parameter set false to make case-sensitive.
+		$dTable.fnFilter(this.value,this.alt,false,true,true,false);
     });
 	
 	     
-    $("tfoot input").focus( function () {
+    $("thead input").focus( function () {
         if ( this.className == "search_init" )
         {
             this.className = "";
@@ -40,7 +72,7 @@ $(function() {
         }
     });
 	     
-    $("tfoot input").blur( function (i) {
+    $("thead input").blur( function (i) {
         if ( this.value == "" )
         {
             this.className = "search_init";
@@ -48,31 +80,15 @@ $(function() {
         }
     });
 	
+		
 });
 
 
+function stopTableSorting(e) { 
+    if (!e)
+        var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation)
+        e.stopPropagation();
+};
 
-
-
-/*
-$(function() {
-	$("a.hideLink").click(function(e) {
-		e.preventDefault();
-		var $link= $(this);
-		var columnIndex= $link.attr("href");
-		$("#hiddenCols").append('<a class="showLink" href="' + columnIndex + '">' + $link.attr("title") + '</a>');		
-		$dTable.fnSetColumnVis(columnIndex,false);
-		
-	});
-	
-	$("a.showLink").live("click",function(e) {
-		e.preventDefault();
-		var $link= $(this);
-		var columnIndex= $link.attr("href");
-		$dTable.fnSetColumnVis(columnIndex,false);
-		$link.remove();
-		
-	});	
-});
-
-*/

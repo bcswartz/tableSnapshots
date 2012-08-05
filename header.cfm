@@ -5,7 +5,7 @@
 	<cfoutput>
 		<link rel="stylesheet" href="css/snapshots.css">
 		<link rel="stylesheet" href="css/menu_style.css" type="text/css" />
-		<script type="text/javascript" src="javascript/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="javascript/jquery-1.7.2.min.js"></script>
 	</cfoutput>
 </head>
 

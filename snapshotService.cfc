@@ -82,6 +82,34 @@
 		</cfif>
 	</cffunction>
 	
+	<cffunction name="returnHiddenColumnHTML" access="public" returntype="string" output="false">
+		<cfargument name="colStruct" type="struct" required="true" />
+		<cfset var hiddenColumnHTML= "">
+		<cfset var colCounter= 1>
+		<cfset var f= "">
+		<cfsavecontent variable="hiddenColumnHTML">
+			<cfoutput>
+				<table border="0" cellpadding="3" cellspacing="2" width="100%">
+					<tbody>
+						<cfloop item="f" collection="#colStruct#">
+							<cfif colCounter EQ 1 or (colCounter mod 7 EQ 1)>
+								<tr>
+							</cfif>
+								<td>
+									<input class="showBox" type="checkbox" value="#(colCounter-1)#" checked="true">#f#
+								</td>
+							<cfif colCounter mod 7 EQ 0>
+								<tr />
+							</cfif>
+							<cfset colCounter= colCounter+1>
+						</cfloop>
+					</tbody>
+				</table>
+			</cfoutput>
+		</cfsavecontent>
+		
+		<cfreturn hiddenColumnHTML />
+	</cffunction>
 	
 	<cffunction name="getSnapshotHTMLTable" access="public" output="false" returntype="string">
 		<cfargument name="snapshotFile" type="string" required="true" />
@@ -100,11 +128,27 @@
 		<cfset buildStruct= variables.JSONDeserializer.deserializeFromJSON(fileContent,true)>
 		<cfsavecontent variable="htmlTable">
 			<cfoutput>
+				
+				<div id="columnControls"><a id="colControlsLink" class="hideControls" href="">Hide column controls</a>
+					<div id="hiddenCols">
+						<p>Check the columns you want displayed in the table, then click "Update Columns"</p>
+						<p><a id="selAll" href="##">Select all</a> | <a id="deselAll" href="##">De-select all</a></p>
+						#returnHiddenColumnHTML(buildStruct.data)#
+						<p>
+							<input type="button" name="updateCols" id="updateCols" value="Update Columns"/>
+						</p>
+					</div>
+				</div>
+				
+				
 				<table name="snapDataTable" id="snapDataTable" class="dataTablesTable"  border="1" cellpadding="2" cellspacing="2">
 					<thead>
 						<tr>
 							<cfloop collection="#buildStruct.data#" item="c">
-								<th><p>#c#<br /><a class="hideLink" title="#c#" href="#colCounter#">(hide)</a></p></th>
+								<th align="left">
+									<p class="chead">#c#</p>
+									<input type="text" class="search_init" title="Search #c#" alt="#colCounter#" value="Search #c#"/>
+									</th>
 								<cfset colCounter= colCounter+1>
 							</cfloop>
 						</tr>
@@ -118,13 +162,6 @@
 							</tr>
 						</cfloop>
 					</tbody>
-					<tfoot>
-						<tr>
-							<cfloop collection="#buildStruct.data#" item="c">
-								<th><input type="text" class="search_init" title="Search #c#" value="Search #c#"/></th>
-							</cfloop>
-						</tr>
-					</tfoot>
 				</table>
 			</cfoutput>
 		</cfsavecontent>

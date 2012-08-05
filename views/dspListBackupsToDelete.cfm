@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="css/dataTableStyles.css" />
+<link rel="stylesheet" type="text/css" href="css/snapshots.jquery.dataTables.css" />
 
 <h2>Delete Backup Files</h2>
 
